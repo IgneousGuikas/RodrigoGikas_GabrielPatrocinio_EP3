@@ -1,14 +1,16 @@
+# lista para para facilitar doctset
 lista_alimentos = ['ABACATE,100,177.00,1.80,6.40,16.00',
                    'ABACAXI,100,58.00,0.40,13.70,0.20',
                    'ABACAXI EM CALDA,100,122.00,0.44,29.77,0.18']
 
-''' processa_dados_alimentos(lista_alimentos)
-
-    Recebe a lista de linhas do arquivo 'alimentos.csv' e devolve
+    
+def processa_dados_alimentos(lista_alimentos):
+    '''
+    Recebe uma lista com as linhas do arquivo 'alimentos.csv' e devolve
     um dicionário com alimentos como keys e valores nutricionais
     como values na forma de listas
     '''
-def processa_dados_alimentos(lista_alimentos):
+    
     ''' Testa se processa_dados_alimentos funciona adequadamente
         >>> processa_dados_alimentos(lista_alimentos) == {'ABACATE': [100.0, 177.00, 1.80, 6.40, 16.00], 'ABACAXI': [100.0, 58.00, 0.40, 13.70, 0.20], 'ABACAXI EM CALDA': [100.0, 122.00, 0.44, 29.77, 0.18]}
         True
