@@ -39,7 +39,8 @@ def processa_dados_usuario(lista_usuario):
     '''
     Recebe a lista de linhas do arquivo 'usuario.csv' e devolve
     um dicionário com as especificações do usuário e um dicionário
-    com os alimentos ingeridos pelo usuário e suas quantidades
+    com os alimentos ingeridos por dia pelo usuário e suas
+    quantidades 
     '''
     
     
@@ -49,22 +50,24 @@ def processa_dados_usuario(lista_usuario):
         >>> a,b = processa_dados_usuario(lista_usuario)
         >>> a == {'ALTURA': 1.64, 'NOME': 'Fulano da Silva', 'PESO': 70, 'SEXO': 'M', 'IDADE': 30, 'FATOR': 'alto'}
         True
-        >>> b == {'06/04/15': ('IOGURTE', 40, 'MAMAO PAPAYA', 50), '07/04/15': ('MACARRAO AO ALHO E OLEO', 200)}
+        >>> b == {'06/04/15': ('IOGURTE', 40.0, 'MAMAO PAPAYA', 50.0), '07/04/15': ('MACARRAO AO ALHO E OLEO', 200.0)}
         True
         '''
     middle = lista_usuario[0].split(',')
     
-    # cria dicionário com as informações do usuário
+    # cria dicioário com as informações do usuário
     info_usuario = {'NOME': middle[0], 'IDADE': int(middle[1]), 'PESO': int(middle[2]), 'SEXO': middle[3], 'ALTURA': float(middle[4]), 'FATOR': middle[5]}
     
     consumo_semana = dict()
+    
+    # cria dicionário com os dias listados pelo usuário como chaves e listas com os alimentos ingeridos intercalados com suas quantidades como valores
     for termo in lista_usuario[1:]:
          linha = []
          linha = termo.split(',')
          if linha[0] in consumo_semana:
-             consumo_semana[linha[0]] += (linha[1], int(linha[2]))
+             consumo_semana[linha[0]] += (linha[1], float(linha[2]))
          else:
-             consumo_semana[linha[0]] = (linha[1], int(linha[2]))
+             consumo_semana[linha[0]] = (linha[1], float(linha[2]))
     return info_usuario,consumo_semana
         
 
