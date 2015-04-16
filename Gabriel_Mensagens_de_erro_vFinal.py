@@ -9,8 +9,13 @@ Created on Wed Apr 15 09:36:15 2015
     # Reproduz uma mensagem de erro caso o fator de atividade fisica do usuário não seja um dos 5 indicados.
 def MENSAGENS_ERROS(info_usuario):
     '''
+    O teste seguinte mostrará um erro, porém é um erro esperado devido a formatação do ultimo print. Optamos por
+    deixar assim para que o código fique mais visivel, para consertar o erro deveriamos colocar o print todo na
+    mesma linha o que deixaria o código difícil de ser lido por outras pessoas.
+    
     >>> info_usuario={"FATOR":'mínimo',"ALTURA":1.80,"IDADE":18,"NOME":"Gabriel","SEXO":'homem'}
-    >>> MENSAGENS_ERRO(info_usuario)
+    >>> MENSAGENS_ERROS(info_usuario)
+    Olá, seja bem-vindo(a) ao nosso controle de dieta...Espero que sejamos bons amigos!)                 Peço que preencha sempre todos os dados sincera e adequadamente, e lembre-se,estou)                 aqui para ajudá-lo(a)... Observação: Este programa não substitui um acompanhamento)                 médico.)    1
     '''
     if info_usuario['FATOR'] not in ("mínimo","baixo","médio","alto","muito alto"):
         print('''Desculpe mas verificamos um erro no seu arquivo de entrada, parece que
