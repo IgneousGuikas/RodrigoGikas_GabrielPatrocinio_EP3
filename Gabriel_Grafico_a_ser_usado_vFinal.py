@@ -1,11 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
-def gráfico_barras_acumuladas(calorias_diarias, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana):
+def grafico_barras_acumuladas(calorias_diarias, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias):
 #Cria uma variavel com a lista de dias
-    dias=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-    samples1 = dias
+    ''' Testa se grafico_barras_acumuladas funciona adequadamente
+        >>> grafico_barras_acumuladas(500,[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],4)
+        [1, 2, 3, 4]
+        '''
+    contagem_dias=[]
     
-    N = len(dias) # Comprimento do eixo x=numero de dias
+    for x in range(1,dias+1):
+        contagem_dias.append(x)
+    
+    samples1 = contagem_dias
+    
+    N = dias # Comprimento do eixo x=numero de dias
     hist1 = np.array([0] * N )
     hist2 = np.array([0] * N )
     hist3 = np.array([0] * N )
@@ -43,4 +51,5 @@ def gráfico_barras_acumuladas(calorias_diarias, calorias_semana, proteinas_sema
     plt.xticks( np.arange( 1,N+1 ) )
     plt.axis( [width/2.0, N+width/2.0, 0, max(5+ hist1+hist2+hist3+hist4+hist5)] )
     plt.show()
+    return contagem_dias
 gráfico_barras_acumuladas()
