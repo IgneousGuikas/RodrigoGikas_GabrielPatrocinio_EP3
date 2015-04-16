@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-def gráfico_barras_acumuladas():
+def gráfico_barras_acumuladas(calorias_diarias, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana):
 #Cria uma variavel com a lista de dias
     dias=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
     samples1 = dias
@@ -13,8 +13,7 @@ def gráfico_barras_acumuladas():
     hist5 = np.array([0] * N )
     
     #--- lista de cada coisa ingerida ---
-    quantidades_calorias_diarias=[calcula_calorias_recomendadas(info_usuario)]*dias
-    calorias_semana,proteinas_semana,gorduras_semana,carboidratos_semana=pesquisa_alimentos(catalogo,consumo_semana)
+    quantidades_calorias_diarias=[calorias_diarias]*dias
     
     #define o valor do eixo y. O valor para cada alimento será o valor dado na lista acima. 
     #Para x=1 pegara o item 0 da lista.
@@ -25,10 +24,10 @@ def gráfico_barras_acumuladas():
     for x in samples1:
         hist3[x-1] +=proteinas_semana[x-1]
     for x in samples1:
-        hist4[x-1] +=gorduras_semana[x-1]
+        hist4[x-1] +=carboidratos_semana[x-1]
     for x in samples1:
-        hist5[x-1] +=carboidratos_semana[x-1]
-    teste="Calorias sugeridas(Kcal)","Calorias ingeridas(Kcal)","Proteina(g)","Gordura(g)","Carboidratos(g)"
+        hist5[x-1] +=gorduras_semana[x-1]
+    teste="Calorias sugeridas(Kcal)","Calorias ingeridas(Kcal)","Proteina(g)", "Carboidratos(g)", "Gordura(g)"
     #Setup do gráfico de barras       
     width = 1
     plt.bar( np.arange(0,N)+0.5, hist1, width, color='#FF0000' )
