@@ -147,6 +147,8 @@ def pesquisa_alimentos(catalogo, consumo_semana):
     carboidratos_semana = [0]*len(consumo_semana)
     gorduras_semana = [0]*len(consumo_semana)
     
+    erros = 1
+    
     modelo_ordem = sorted(consumo_semana)
     
     for dia in consumo_semana:
@@ -167,7 +169,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
                 carboidratos += float('{0:.4f}'.format(catalogo[consumo_semana[dia][termo]][3] * porcoes)) # calcula consumo diario total de carboidratos
                 gorduras += float('{0:.4f}'.format(catalogo[consumo_semana[dia][termo]][4] * porcoes)) # calcula consumo diario total de gorduras
             else:
-                return None
+                erros = 0
         
         # insere os totais calculados acima em seu respectivo vetor em ordem crescente de dias da semana
         calorias_semana[modelo_ordem.index(dia)] = calorias
@@ -175,7 +177,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         carboidratos_semana[modelo_ordem.index(dia)] = carboidratos
         gorduras_semana[modelo_ordem.index(dia)] = gorduras
 
-    return calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana
+    return erros, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana
 
 
 
