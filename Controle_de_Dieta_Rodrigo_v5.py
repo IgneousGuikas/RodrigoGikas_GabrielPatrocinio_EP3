@@ -29,10 +29,9 @@ def processa_dados_alimentos(lista_alimentos):
     Recebe a lista de linhas do arquivo 'alimentos.csv' e devolve
     um dicionário com alimentos como keys e valores nutricionais
     como values na forma de listas
-    '''
-    
-    
-    ''' Testa se processa_dados_alimentos funciona adequadamente
+        
+        
+        Testa se processa_dados_alimentos funciona adequadamente
         >>> processa_dados_alimentos(lista_alimentos) == {'ABACATE': [100.0, 177.00, 1.80, 6.40, 16.00], 'ABACAXI': [100.0, 58.00, 0.40, 13.70, 0.20], 'ABACAXI EM CALDA': [100.0, 122.00, 0.44, 29.77, 0.18]}
         True
     '''
@@ -54,10 +53,9 @@ def processa_dados_usuario(lista_usuario):
     Recebe a lista de linhas do arquivo 'usuario.csv' e devolve
     um dicionário com as especificações do usuário e um dicionário
     com os alimentos ingeridos pelo usuário e suas quantidades
-    '''
-    
-    
-    ''' Testa se processa_dados_usuario funciona adequadamente
+        
+        
+        Testa se processa_dados_usuario funciona adequadamente
         >>> a = {}
         >>> b = {}
         >>> a,b = processa_dados_usuario(lista_usuario)
@@ -91,10 +89,9 @@ def calcula_calorias_recomendadas(info_usuario):
     Recebe um dicionário com as informações do usuario e devolve
     uma variável com a quantidade recomendada de calorias ingeridas
     por dia para esse usuario
-    '''
-    
-    
-    ''' Testa se calcula_calorias_recomendadas funciona adequadamente
+        
+        
+        Testa se calcula_calorias_recomendadas funciona adequadamente
         >>> calcula_calorias_recomendadas({'ALTURA': 1.64, 'NOME': 'Fulano da Silva', 'PESO': 70, 'SEXO': 'M', 'IDADE': 30, 'FATOR': 'alto'})
         2833.416
         '''
@@ -127,10 +124,9 @@ def pesquisa_alimentos(catalogo, consumo_semana):
     Recebe dois dicionários, um com o catálogo de alimentos e outro com
     o consumido pelo usuario na semana e devolve um dicionário com os
     valores nutricionais referêntes a cada dia
-    '''
-    
-    
-    ''' Testa se pesquisa_alimentos funciona adequadamente
+        
+        
+        Testa se pesquisa_alimentos funciona adequadamente
         >>> pesquisa_alimentos(catalogo, consumo_semana) == {'06/04/15': [296.9, 12.282, 48.77, 5.846], '07/04/15': [552.0, 33.4, 0.0, 46.4]}
         True
         >>> pesquisa_alimentos(catalogo, {'06/07/15': ('WASABI', 40.0)})
@@ -166,10 +162,9 @@ def indice_massa_corporal(info_usuario):
     '''
     Recebe um dicionário com as informações do usuário e devolve
     o índice de massa corporal (IMC) como um número
-    '''
-    
-    
-    ''' Testa se indice_massa_corporal funciona adequadamente
+        
+        
+        Testa se indice_massa_corporal funciona adequadamente
         >>> indice_massa_corporal({'ALTURA': 1.64, 'NOME': 'Fulano da Silva', 'PESO': 70, 'SEXO': 'M', 'IDADE': 30, 'FATOR': 'alto'})
         26.42
         '''
