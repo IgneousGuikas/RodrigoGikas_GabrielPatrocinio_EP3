@@ -19,17 +19,17 @@ def calcula_calorias_recomendadas(info_usuario):
     
     # calcula a quantidade recomendada de calorias a ser ingerida por dia (em kcal) segundo o TMB e o fator de atividade física
     if info_usuario['FATOR'] == 'mínimo':
-        calorias_diarias = TMB * 1.2
+        calorias_recomendadas = TMB * 1.2
     elif info_usuario['FATOR'] == 'baixo':
-        calorias_diarias = TMB * 1.375
+        calorias_recomendadas = TMB * 1.375
     elif info_usuario['FATOR'] == 'médio':
-        calorias_diarias = TMB * 1.55
+        calorias_recomendadas = TMB * 1.55
     elif info_usuario['FATOR'] == 'alto':
-        calorias_diarias = TMB * 1.725
+        calorias_recomendadas = TMB * 1.725
     else:
-        calorias_diarias = TMB * 1.9
+        calorias_recomendadas = TMB * 1.9
     
-    return calorias_diarias
+    return calorias_recomendadas
 
 
 
@@ -68,7 +68,7 @@ def total_calorias_ingeridas(calorias_semana):
 
 '''Verifica se a Média diaria de calorias ingeridas é maior ou menor que o recomendado e prepara
     parte do relatório baseado nisso.'''
-def CALCULA_COMPARACAO(total,calorias_diarias,dias):
+def CALCULA_COMPARACAO(total,calorias_recomendadas,dias):
     '''
     >>> CALCULA_COMPARACAO(700,600,2)
     ('a menos que o', 350.0)
@@ -78,9 +78,9 @@ def CALCULA_COMPARACAO(total,calorias_diarias,dias):
     (',exatamente igual o', 600.0)
     '''
     MEDIA_CAL=total/dias
-    if MEDIA_CAL < calorias_diarias:
+    if MEDIA_CAL < calorias_recomendadas:
         COMPARACAO="a menos que o"
-    elif MEDIA_CAL > calorias_diarias:
+    elif MEDIA_CAL > calorias_recomendadas:
         COMPARACAO="a mais que o"
     else:
         COMPARACAO=",exatamente igual o"
@@ -88,14 +88,14 @@ def CALCULA_COMPARACAO(total,calorias_diarias,dias):
 
 #------------------------------------------------------------
 #função que calcula quanto o usuário ganhou ou perdeu de massa.
-def ganho_ou_perda_massa(total,calorias_diarias):
+def ganho_ou_perda_massa(total,calorias_recomendadas):
     '''
     >>> ganho_ou_perda_massa(1300, 600)
     ('no ganho', 100.0)
     >>> ganho_ou_perda_massa(200, 600)
     ('na perda', 57.142857142857146)
     '''
-    ganho_ou_perda= calorias_diarias - total
+    ganho_ou_perda= calorias_recomendadas - total
     if ganho_ou_perda <=0:
         #"Ingeriu mais que o recomendado, ganhará massa"
         peso_ganho= abs(ganho_ou_perda)/7
