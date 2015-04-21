@@ -138,7 +138,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         >>> erros = 0
         >>> lista_dias, erros, calorias, proteinas, carboidratos, gorduras = pesquisa_alimentos(catalogo, consumo_semana)
         >>> print(lista_dias)
-        [datetime.datetime(15, 4, 7, 0, 0), datetime.datetime(15, 4, 6, 0, 0)]
+        [datetime.date(15, 4, 6), datetime.date(15, 4, 7)]
         >>> print(erros)
         1
         >>> print(calorias)
@@ -170,7 +170,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         carboidratos = 0
         gorduras= 0
         middle = dia.split('/')
-        lista_dias.append(datetime(int(middle[2])+2000,int(middle[1]),int(middle[0])))
+        lista_dias.append(date(int(middle[2])+2000,int(middle[1]),int(middle[0])))
         
         for termo in range(0,len(consumo_semana[dia]),2):
             porcoes = 0
@@ -191,7 +191,9 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         proteinas_semana[modelo_ordem.index(dia)] = proteinas
         carboidratos_semana[modelo_ordem.index(dia)] = carboidratos
         gorduras_semana[modelo_ordem.index(dia)] = gorduras
-
+    
+    lista_dias = sorted(lista_dias)
+    
     return lista_dias, erros, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana
 
 
