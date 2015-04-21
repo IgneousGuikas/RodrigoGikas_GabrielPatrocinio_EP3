@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+from datetime import *
 
     # Reproduz uma mensagem de erro caso o fator de atividade fisica do usuário não seja um dos 5 indicados.
 def MENSAGENS_ERROS(info_usuario):
@@ -49,12 +49,9 @@ def MENSAGENS_ERROS(info_usuario):
 
 
 
-def grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias):
+def grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias, lista_dias):
 #Cria uma variavel com a lista de dias
-    ''' Testa se grafico_barras_acumuladas funciona adequadamente
-        >>> grafico_barras_acumuladas(500,[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],4)
-        [1, 2, 3, 4]
-        '''
+
     contagem_dias = []
     
     for x in range(1,dias+1):
@@ -82,12 +79,14 @@ def grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_
         hist4[x-1] +=carboidratos_semana[x-1]
     for x in contagem_dias:
         hist5[x-1] +=gorduras_semana[x-1]
+    
     teste1="Proteina(g)", "Carboidratos(g)", "Gordura(g)"
     teste2="Calorias sugeridas(Kcal)","Calorias ingeridas(Kcal)"
+    
     #Setup dos gráficos de barras       
     
     
-    plt.subplot(111)
+    ax1 = plt.subplot(111)
     plt.bar( np.arange(0,N)+0.55, hist3, 0.3, color='#FFFF00')
     plt.bar( np.arange(0,N)+0.85, hist4, 0.3, color='#008000')
     plt.bar( np.arange(0,N)+1.15, hist5, 0.3, color='#3F62F5')
@@ -95,16 +94,17 @@ def grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_
     #Legenda do gráfico    
     plt.legend(teste1,bbox_to_anchor=(1.0, -0.15),ncol=2,fancybox=True, shadow=True)
     plt.xlabel( 'Dias' )
-    plt.ylabel( 'Quantidades' )
+    plt.ylabel( 'Quantidades ingeridas' )
     #Limite dos eixos do gráfico
-    plt.xticks( np.arange( 1,N+1 ) )
+    ax1.set_xticks(np.arange(1,N+1))
+    ax1.set_xticklabels(lista_dias)
     plt.axis( [0.5, N+0.5, 0, max(hist3+hist4+hist5)] )
     plt.show()
     
     
     
     
-    plt.subplot(111)
+    ax2 = plt.subplot(111)
     plt.bar( np.arange(0,N)+0.55, hist1, 0.45, color='#FF0000')
     plt.bar( np.arange(0,N)+1, hist2, 0.45, color='#FF4500')
     
@@ -113,11 +113,11 @@ def grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_
     plt.xlabel( 'Dias' )
     plt.ylabel( 'Quantidades' )
     #Limite dos eixos do gráfico
-    plt.xticks( np.arange( 1,N+1 ) )
+    ax2.set_xticks(np.arange(1,N+1))
+    ax2.set_xticklabels(lista_dias)
     plt.axis( [0.5, N+0.5, 0, max(5+ hist1+hist2)] )
     plt.show()
-    
-    return contagem_dias
+
 
 
 #-----------------------------------------------------
