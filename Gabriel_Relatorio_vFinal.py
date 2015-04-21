@@ -69,7 +69,7 @@ def FAIXA_IMC(IMC,faixas_IMC=IMC_faixas):
     #------------------------------------------------------------
 '''Verifica se a Média diaria de calorias ingeridas é maior ou menor que o recomendado e prepara
     parte do relatório baseado nisso.'''
-def CALCULA_COMPARACAO(total,calorias_diarias,dias):
+def CALCULA_COMPARACAO(total,calorias_recomendadas,dias):
     '''
     >>> CALCULA_COMPARACAO(700,600,2)
     'a menos que o'
@@ -79,9 +79,9 @@ def CALCULA_COMPARACAO(total,calorias_diarias,dias):
     ',exatamente igual o'
     '''
     MEDIA_CAL=total/dias
-    if MEDIA_CAL < calorias_diarias:
+    if MEDIA_CAL < calorias_recomendadas:
         COMPARACAO="a menos que o"
-    elif MEDIA_CAL > calorias_diarias:
+    elif MEDIA_CAL > calorias_recomendadas:
         COMPARACAO="a mais que o"
     else:
         COMPARACAO=",exatamente igual o"
@@ -89,14 +89,14 @@ def CALCULA_COMPARACAO(total,calorias_diarias,dias):
 
 #------------------------------------------------------------
 #função que calcula quanto o usuário ganhou ou perdeu de massa.
-def ganho_ou_perda_massa(total,calorias_diarias):
+def ganho_ou_perda_massa(total,calorias_recomendadas):
     '''
     >>> ganho_ou_perda_massa(1300, 600)
     ('no ganho', 100.0)
     >>> ganho_ou_perda_massa(200, 600)
     ('na perda', 57.142857142857146)
     '''
-    ganho_ou_perda= calorias_diarias - total
+    ganho_ou_perda= calorias_recomendadas - total
     if ganho_ou_perda <=0:
         #"Ingeriu mais que o recomendado, ganhará massa"
         peso_ganho= abs(ganho_ou_perda)/7
