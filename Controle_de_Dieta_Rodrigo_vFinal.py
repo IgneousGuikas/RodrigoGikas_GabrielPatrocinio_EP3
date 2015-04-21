@@ -170,7 +170,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         carboidratos = 0
         gorduras= 0
         middle = dia.split('/')
-        lista_dias.append(datetime(int(middle[2]),int(middle[1]),int(middle[0])))
+        lista_dias.append(datetime(int(middle[2])+2000,int(middle[1]),int(middle[0])))
         
         for termo in range(0,len(consumo_semana[dia]),2):
             porcoes = 0
