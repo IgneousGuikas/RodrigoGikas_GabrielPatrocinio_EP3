@@ -102,18 +102,19 @@ def calcula_calorias_recomendadas(info_usuario):
     
     
     # calcula a quantidade recomendada de calorias a ser ingerida por dia (em kcal) segundo o TMB e o fator de atividade física
+    # variável calorias_diarias foi substituida por calorias_recomendadas
     if info_usuario['FATOR'] == 'mínimo':
-        calorias_diarias = TMB * 1.2
+        calorias_recomendadas = TMB * 1.2
     elif info_usuario['FATOR'] == 'baixo':
-        calorias_diarias = TMB * 1.375
+        calorias_recomendadas = TMB * 1.375
     elif info_usuario['FATOR'] == 'médio':
-        calorias_diarias = TMB * 1.55
+        calorias_recomendadas = TMB * 1.55
     elif info_usuario['FATOR'] == 'alto':
-        calorias_diarias = TMB * 1.725
+        calorias_recomendadas = TMB * 1.725
     else:
-        calorias_diarias = TMB * 1.9
+        calorias_recomendadas= TMB * 1.9
     
-    return calorias_diarias
+    return calorias_recomendadas
 
 
 
