@@ -41,7 +41,7 @@ while True:
     # se houver erro nas informações do usuário, mostra uma mensagem de erro e fecha o programa, caso contrário mostra uma mensagem de boas vindas
     erros = MENSAGENS_ERROS(info_usuario)
     
-    erros, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana = pesquisa_alimentos(catalogo, consumo_semana)
+    lista_dias, erros, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana = pesquisa_alimentos(catalogo, consumo_semana)
     
     if erros == 0:
         break
@@ -52,7 +52,7 @@ while True:
     IMC = calcula_IMC(info_usuario)
     dias, total = total_calorias_ingeridas(calorias_semana)
     
-    grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias)    
+    grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias, lista_dias)    
     
     
     REL_FINAL, RESULTADO = FAIXA_IMC(IMC)
