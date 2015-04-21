@@ -48,16 +48,16 @@ while True:
     else:
         None
     
-    calorias_diarias = calcula_calorias_recomendadas(info_usuario)
+    calorias_recomendadas = calcula_calorias_recomendadas(info_usuario)
     IMC = calcula_IMC(info_usuario)
     dias, total = total_calorias_ingeridas(calorias_semana)
     
-    grafico_barras_acumuladas(calorias_diarias, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias)    
+    grafico_barras_acumuladas(calorias_recomendadas, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana, dias)    
     
     
     REL_FINAL, RESULTADO = FAIXA_IMC(IMC)
-    COMPARACAO, MEDIA_CAL = CALCULA_COMPARACAO(total, calorias_diarias, dias)
-    DIFERENCA, quantidade = ganho_ou_perda_massa(total, calorias_diarias)
+    COMPARACAO, MEDIA_CAL = CALCULA_COMPARACAO(total, calorias_recomendadas, dias)
+    DIFERENCA, quantidade = ganho_ou_perda_massa(total, calorias_recomendadas)
     
     
     
