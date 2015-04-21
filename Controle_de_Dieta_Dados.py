@@ -1,3 +1,5 @@
+from datetime import *
+
 # lista para facilitar doctest
 lista_alimentos = ['ABACATE,100,177.00,1.80,6.40,16.00',
                    'ABACAXI,100,58.00,0.40,13.70,0.20',
@@ -92,8 +94,14 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         >>> calorias = []
         >>> proteinas = []
         >>> carboidratos = []
-        >>> gorduras = []        
-        >>> calorias, proteinas, carboidratos, gorduras = pesquisa_alimentos(catalogo, consumo_semana)
+        >>> gorduras = []   
+        >>> lista_dias = []
+        >>> erros = 0
+        >>> lista_dias, erros, calorias, proteinas, carboidratos, gorduras = pesquisa_alimentos(catalogo, consumo_semana)
+        >>> print(lista_dias)
+        [datetime.datetime(15, 4, 7, 0, 0), datetime.datetime(15, 4, 6, 0, 0)]
+        >>> print(erros)
+        1
         >>> print(calorias)
         [296.9, 552.0]
         >>> print(proteinas)
@@ -103,6 +111,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         >>> print(gorduras)
         [5.846, 46.4]
         >>> pesquisa_alimentos(catalogo, {'06/07/15': ('WASABI', 40.0)})
+        ([], 0, [0], [0], [0], [0])
         '''
     calorias_semana = [0]*len(consumo_semana)
     proteinas_semana = [0]*len(consumo_semana)
@@ -110,6 +119,8 @@ def pesquisa_alimentos(catalogo, consumo_semana):
     gorduras_semana = [0]*len(consumo_semana)
     
     erros = 1
+    
+    lista_dias = []
     
     modelo_ordem = sorted(consumo_semana)
     
@@ -119,6 +130,8 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         proteinas = 0
         carboidratos = 0
         gorduras= 0
+        middle = dia.split('/')
+        lista_dias.append(datetime(int(middle[2]),int(middle[1]),int(middle[0])))
         
         for termo in range(0,len(consumo_semana[dia]),2):
             porcoes = 0
@@ -132,6 +145,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
                 gorduras += float('{0:.4f}'.format(catalogo[consumo_semana[dia][termo]][4] * porcoes)) # calcula consumo diario total de gorduras
             else:
                 erros = 0
+                lista_dias = []
         
         # insere os totais calculados acima em seu respectivo vetor em ordem crescente de dias da semana
         calorias_semana[modelo_ordem.index(dia)] = calorias
@@ -139,4 +153,4 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         carboidratos_semana[modelo_ordem.index(dia)] = carboidratos
         gorduras_semana[modelo_ordem.index(dia)] = gorduras
 
-    return erros, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana
+    return lista_dias, erros, calorias_semana, proteinas_semana, carboidratos_semana, gorduras_semana
