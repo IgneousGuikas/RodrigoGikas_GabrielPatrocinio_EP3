@@ -99,7 +99,7 @@ def pesquisa_alimentos(catalogo, consumo_semana):
         >>> erros = 0
         >>> lista_dias, erros, calorias, proteinas, carboidratos, gorduras = pesquisa_alimentos(catalogo, consumo_semana)
         >>> print(lista_dias)
-        [datetime.date(15, 4, 6), datetime.date(15, 4, 7)]
+        [datetime.date(2015, 4, 6), datetime.date(2015, 4, 7)]
         >>> print(erros)
         1
         >>> print(calorias)
